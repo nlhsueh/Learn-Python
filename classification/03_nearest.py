@@ -60,11 +60,13 @@ class Classifier:
         f.close()
         self.format = lines[0].strip().split('\t')
         self.data = []
-        for line in lines[1:]:
+        for line in lines[1:]: # 忽略第一行的標頭
             fields = line.strip().split('\t')
             ignore = []
             vector = []
+            # 把不同欄位的值放到不同的 list 內
             for i in range(len(fields)):
+                print (self.format[i])
                 if self.format[i] == 'num':
                     vector.append(float(fields[i]))
                 elif self.format[i] == 'comment':
@@ -76,12 +78,10 @@ class Classifier:
         # get length of instance vector
         self.vlen = len(self.data[0][1])
         # now normalize the data
+        # 向量內每一個 dim 都要 normalize
         for i in range(self.vlen):
             self.normalizeColumn(i)
         
-
-        
-    
     ##################################################
     ###
     ###  CODE TO COMPUTE THE MODIFIED STANDARD SCORE
@@ -209,14 +209,35 @@ def test(training_filename, test_filename):
             prefix = '+'
         print("%s  %12s  %s" % (prefix, theClass, line))
     print("%4.2f%% correct" % (numCorrect * 100/ len(lines)))
-        
+       
+def unitTest1():
+    list1 = [1, 12,23,34,45]
+    
+    classifier = Classifier('athletesTrainingSet.txt')
+    m = classifier.getMedian(list1)
+    assert(m==23)
+    print ("unit test 1 ok")
+    
+    list2 = [1, 12,23, 23,34,45]
+    m = classifier.getMedian(list2)
+    assert(m==23)
+    print ("unit test 2 ok")
+    
+    list3 = [1, 12, 23, 24, 34, 45]
+    m = classifier.getMedian(list3)
+    print (m)
+    assert(round(m,1)==23.5)
+    print ("unit test 3 ok")
+
+
+#unitTest1()        
 
 ##
 ##  Here are examples of how the classifier is used on different data sets
 ##  in the book.
 
-test('athletesTrainingSet.txt', 'athletesTestSet.txt')
+#test('athletesTrainingSet.txt', 'athletesTestSet.txt')
 
 #test("irisTrainingSet.data", "irisTestSet.data")
-#test("mpgTrainingSet.txt", "mpgTestSet.txt")
+test("mpgTrainingSet.txt", "mpgTestSet.txt")
     

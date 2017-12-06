@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-    csv demo
-"""
+#
+# CSV module 
+#
 
+# EXAMPLE
 import csv
 
 def dataProcess():
@@ -28,3 +27,11 @@ def dataProcess():
 
 g = dataProcess()
 print (g)
+
+# WRITE
+
+fo = open("./outputfile/foo.txt", "rw")
+fo.write ("hello\n")
+fo.write ("nick")
+
+fo.close()

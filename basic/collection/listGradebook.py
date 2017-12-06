@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 # 
-# List
+# GRADEBOOK example
 #
 
 grade = [100, 40, 19, 85, 75, 72]
@@ -41,10 +38,6 @@ letters
 
 names = ['nick', 'john', 'albert']
 names
-
-# 
-# List of list
-#
 
 # [12,1,100] English, Math, Physical grade fo student 0
 t_grade = [[12,1,100], [34, 32, 72], [45,99,100]]
@@ -106,21 +99,97 @@ for subject in subject_list:
 print(subject_avg)    
 
 
-# 
-# is
-#
-
-a = [1,2,3]
-b = [1,2,3]
-a is b
-
-c = a
-c is a
-
-
 """ 
 Exercise
 * 寫一個副程式，將二維的 t_grade 的行列對調
 * 例如 [[1,2,3],[4,5,6],[7,8,0]] => [[1,4,7],[2,5,8],[3,6,9]]
 exchange(grade)
 """
+
+
+# 
+# EXERCISE 
+#
+
+g1 = [12,22,99]
+g2 = [100,100]
+g1.append(g2)
+g1
+
+g1.append(20)
+print (g1)
+
+g1 = [12,22,99]
+g2 = [100,100]
+g1.extend(g2)
+print (g1)
+
+g1 = [12,22,99]
+g2 = [100,100]
+g1.insert(1,g2)
+print (g1)
+
+g1.remove(99)
+g1.remove(98) # value error
+
+g1 = [12,22,99]
+print (g1.index(99))
+
+g1 = [99,100,10]
+g1.sort()
+print (g1)
+
+grade = []
+grade.append([1,2])
+grade
+
+grade = [[1,2],[2,3]]
+grade.append([4,5])
+grade
+
+names = ['nick', 'apple', 'john']
+print (names.index('apple'))
+names.sort()
+names
+
+
+# create a list of x-square: 0, 1, 4, ...
+s = [x**2 for x in range(10)]
+
+# another way
+s=[]
+for x in range(10):
+   s.append(x**2) 
+
+# combination in a condition    
+s2 = [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+print (s2)
+
+#
+# READ CSV to LIST
+#
+
+grade = []
+import csv
+f = open('grade.csv', 'r')
+for row in csv.reader(f):
+    print (row)
+    g = []
+    for d in row:
+        g.append(int(d))
+    grade.append(g)    
+f.close()
+
+print(grade)
+
+# 直接放到 list 中：
+grade = []
+import csv
+f = open('grade.csv', 'r')
+grade_str = list(csv.reader(f))
+print(grade_str)
+
+grade=[]
+for s in grade_str:
+    # map(int, list): 可以把 list 內的 str 都轉為 int
+    grade.append(list(map(int, s)))

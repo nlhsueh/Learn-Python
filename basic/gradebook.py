@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 class GradeBook:
     '記錄及管理所有學生的所有科目的成績'
 
@@ -26,9 +23,7 @@ class GradeBook:
                 sum += g
             self.studentAverages.append(sum//len(s))  
             
-        # compute average of each subject    
-
-    def get_average(self):
+    def getAverage(self):
         '回傳所有科目的平均, list of float'
         return self.studentAverages
 
@@ -36,7 +31,7 @@ class GradeBook:
         'return the average of the student i'
         return self.studentAverages[i]
 
-    def getSubjectAverage(j):
+    def getSubjectAverage(self, j):
         'return the average of the subject j'
 
     def getSubjectGrade(self, j):

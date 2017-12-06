@@ -1,33 +1,22 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 #
-# class
+# CLASS
 #
 
 class MyClass:
     "a demo class"
     count = 0
-    __x = 100
+    x = 100
     def __init__(self, x):
         self.__x += x;
         self.count += 1
-        
-#   ERROR
-#   def increase():
-#        x += 1
-        
-#    ERROR
-#    def increase():
-#        self.x += 1
-        
+               
     def increase(self):
         self.__x += 1
  
     def printX(self):
         print (self.__x)
         
-            
+# inheritance            
 class DerivedClass(MyClass):
     y=100
 

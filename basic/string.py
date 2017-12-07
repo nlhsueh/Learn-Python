@@ -13,13 +13,13 @@ len(s)              # returns 10
 # string slicing is like list slicing
 s[:6]               # returns 'I like'
 s[7:]               # returns 'python'
-s[-1]               # returns 'u'
+s[-1]               # returns 'n'
 
 # basic string methods (does not modify the original string)
-s.lower()           # returns 'i like you'
-s.upper()           # returns 'I LIKE YOU'
+s.lower()           # returns 'i like python'
+s.upper()           # returns 'I LIKE PYTHON'
 s.startswith('I')   # returns True
-s.endswith('you')   # returns True
+s.endswith('python')# returns True
 s.isdigit()         # returns False (returns True if every character in the string is a digit)
 s.find('like')      # returns index of first occurrence (2)
 s.find('hate')      # returns -1 since not found

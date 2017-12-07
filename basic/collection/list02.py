@@ -36,8 +36,7 @@ for num in nums:
     if num % 2 == 0:
         cubes2.append(num**3)
 
-# equivalent list comprehension
-# syntax: [expression for variable in iterable if condition]
+# [expression for variable in iterable if condition]
 cubes2 = [num**3 for num in nums if num % 2 == 0]    # [8, 64]
 
 # for loop to cube even numbers and square odd numbers
@@ -48,8 +47,7 @@ for num in nums:
     else:
         cubes3.append(num**2)
 
-# equivalent list comprehension (using a ternary expression)
-# syntax: [true condition if condition else false condition for variable in iterable]
+# [... if ... else ... for ...]
 cubes3 = [num**3 if num % 2 == 0 else num**2 for num in nums] # [1, 8, 9, 64, 25]
 
 # for loop to flatten a 2d-matrix
@@ -64,5 +62,5 @@ items = [item for row in matrix for item in row]
 
 # set/list comprehension
 fruits = ['apple', 'banana', 'cherry']
-len_set = {len(fruit) for fruit in fruits}   # {5, 6}
-len_list = [len(fruit) for fruit in fruits]
+len_set = {len(fruit) for fruit in fruits} # {5, 6}
+len_list = [len(fruit) for fruit in fruits] # [5, 6]

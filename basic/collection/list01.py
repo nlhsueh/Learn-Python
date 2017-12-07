@@ -28,8 +28,8 @@ weekdays[::2] # step = 2
 weekdays[::-1] # reverse
 
 # modify a list (does not return the list)
-students.append('lisa')
-students.extend(['nick', 'allen']) 
+students.append('lisa') # append an element
+students.extend(['nick', 'allen']) # extend a list
 students.insert(0, 'maggie')           
 students.remove('nick') # remove fist nick
 students.pop(2) # remove and return                       
@@ -40,10 +40,10 @@ students[0] = 'peter'
 students.count('nick')
 students.index('albert')
 
-# sort a list in place (modifies but does not return the list)
+# sort a list (modify the original list)
 students.sort()
 students.sort(reverse=True) # sort in reverse
-students.sort(key=len) # sort by a key, now key is len(str)
+students.sort(key=len) # sort by the key (len(str))
 
 # concatenate lists (slower than 'extend' method)
 members = students + ['ned', 'rod', 'todd']
@@ -52,13 +52,13 @@ members = students + ['ned', 'rod', 'todd']
 list(reversed(weekdays))
 
 # using lambda
-grade = [[100,98,88], [67,78,89], [34,45,56]]
-g = sorted(grade, key=lambda x: sum(x))
+grade = [[100,98,88,20], [67,78,89], [34,45,56]]
+g = sorted(grade, key=lambda x: sum(x)) # sort by the sum
 
 # return a sorted list (does not modify the original list)
-s2 = sorted(students)
-s2 = sorted(students, reverse=True)
-s2 = sorted(students, key=len)
+s2 = sorted(grade)
+s2 = sorted(grade, reverse=True)
+s2 = sorted(grade, key=len)
 
 # insert into an already sorted list, and keep it sorted
 num = [10, 20, 40, 50]
@@ -69,13 +69,13 @@ insort(num, 30)
 num2 = num
 num2[0] = 0 # modifies both 
 
-# copy a list (two ways)
-num3 = num[:]
-new3 = list(num)
-new4 = num.copy()
+# copy a list (three ways)
+num_copy1 = num[:]
+num_copy2 = list(num)
+num_copy3 = num.copy()
 
 # examine objects
-num is num2 # same object
-num is num3
-num == num2 # same content
-num == num3 
+num is num2 # True; same object
+num is num_copy1 # False
+num == num2 # True
+num == num_copy1 # True; same content

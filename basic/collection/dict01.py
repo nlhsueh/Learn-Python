@@ -5,29 +5,29 @@ empty_dict = {}
 empty_dict = dict()
 
 # create a dictionary (two ways)
-family = {'dad':'Homer', 'mom':'Marge', 'size':6} # {key:value}
-family = dict(dad='Homer', mom='Marge', size=6) # dict(key=value)
+family = {'dad':'Jack', 'mom':'LiLi', 'size':6} # {key:value}
+family = dict(dad='Jack', mom='LiLi', size=6) # dict(key=value)
 
 # key 可以是 int, string, tuple 等不可修改的形態
 grade = {1:12, 2:100, 3:90}
 
 # key 的形態必須 immutable, List 是不行的：
-grade = {'[eng]':12, 'math':100, 'phy':90, 'eng':90} # ERROR!
+grade = {['eng']:12, 'math':100, 'phy':90, 'eng':90} # ERROR!
 
 # convert a list of tuples into a dictionary
-list_of_tuples = [('dad', 'Homer'), ('mom', 'Marge'), ('size', 6)]
+list_of_tuples = [('dad', 'Jack'), ('mom', 'LiLi'), ('size', 6)]
 family = dict(list_of_tuples)
 
 # examine a dictionary
-family['dad']       # returns 'Homer'
+family['dad']       # returns 'Jack'
 len(family)         # returns 3
 'mom' in family     # returns True
-'marge' in family   # returns False (only checks keys)
+'LiLi' in family   # returns False (only checks keys)
 
-# returns an iterable view (Python 3)
+# returns an iterable view 
 family.keys()       # keys: ['dad', 'mom', 'size']
-family.values()     # values: ['Homer', 'Marge', 6]
-family.items()      # key-value pairs: [('dad', 'Homer'), ('mom', 'Marge'), ('size', 6)]
+family.values()     # values: ['Jack', 'LiLi', 6]
+family.items()      # key-value pairs: [('dad', 'Jack'), ('mom', 'LiLi'), ('size', 6)]
 
 # modify/add a dictionary (does not return the dictionary)
 family['cat'] = 'snowball'              # add a new entry
@@ -35,16 +35,16 @@ family['cat'] = 'snowball ii'           # edit an existing entry
 family['baby'] = 'maggie'
 del family['cat']                       # delete an entry
 family['kids'] = ['bart', 'lisa']       # dictionary value can be a list
-family.pop('dad')                       # remove an entry and return the value ('homer')
+family.pop('dad')                       # remove an entry and return the value ('Jack')
 family.update({'baby':'maggie', 'grandpa':'abe'})   # add multiple entries
 
 # access values more safely with 'get'
-family['mom']                       # returns 'Marge'
+family['mom']                       # returns 'LiLi'
 family.get('mom')                   # equivalent
 family['grandma']                   # throws an ERROR since the key does not exist
 family.get('grandma')               # returns None instead
 family.get('grandma', 'not found')  # returns 'not found' (the default)
-'Homer' in family					# True
+'Jack' in family                    # True
 
 # access a list element within a dictionary
 family['kids'][0]                   # returns 'bart'
@@ -54,7 +54,7 @@ family['kids'].remove('lisa')       # removes 'lisa'
 'youngest child is %(baby)s' % family   # returns 'youngest child is maggie'
 
 # iterate through two things at once (using tuple unpacking)
-family = {'dad':'Homer', 'mom':'Marge', 'size':6}
+family = {'dad':'Jack', 'mom':'LiLi', 'size':6}
 for key, value in family.items():
     print(key, value)
 

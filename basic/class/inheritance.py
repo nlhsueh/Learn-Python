@@ -9,7 +9,8 @@ class Employee:
 class Engineer(Employee): 
    def __init__ (self, name, ID, expert):
        # 呼叫父類別的建構子
-       super(Engineer, self).__init__(name, ID)
+       super().__init__(name, ID)
+       # python 2 必須是 super(Engineer, self)....
        self.expert = expert
 
    # overriding       

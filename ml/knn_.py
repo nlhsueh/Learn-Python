@@ -16,7 +16,7 @@ np.random.seed(42)
 indices = np.random.permutation(len(iris_data))
 print (indices)
 
-n = 12 #number of test
+n = 12 # number of test
 X = iris_data[indices[:-n]] # training data set
 
 y = iris_labels[indices[:-n]] # training data label
@@ -32,6 +32,7 @@ def distance(instance1, instance2):
     instance2 = np.array(instance2)
     
     return np.linalg.norm(instance1 - instance2)
+    # Euclidean Distance
 
 print(distance(X[3], X[44])) # a test
 
@@ -42,7 +43,7 @@ def get_neighbors(X,
                   distance = distance):
     """
     計算與 'test_instance' 最近的 k 個鄰居
-    鄰居包含三個資料：(index, dist, label)
+    回傳鄰居包含三個資料：(index, dist, label)，依據 dist 作由小到大的排序
     index    is the index from the training_set, 
     dist     is the distance between the test_instance and the 
              instance training_set[index]
@@ -110,66 +111,4 @@ for i in range(n):
     print("index: ", i, 
           ", vote_prob: ", vote_prob(neighbors), 
           ", label: ", y[i], 
-          ", data: ", X[i])
-    
-"""
-HARMONIC WEIGHTs
-"""    
-def vote_harmonic_weights(neighbors, all_results=True):
-    class_counter = Counter()
-    number_of_neighbors = len(neighbors)
-    for index in range(number_of_neighbors):
-        class_counter[neighbors[index][2]] += 1/(index+1)
-    labels, votes = zip(*class_counter.most_common())
-    #print(labels, votes)
-    winner = class_counter.most_common(1)[0][0]
-    votes4winner = class_counter.most_common(1)[0][1]
-    if all_results:
-        total = sum(class_counter.values(), 0.0)
-        for key in class_counter:
-             class_counter[key] /= total
-        return winner, class_counter.most_common()
-    else:
-        return winner, votes4winner / sum(votes)
-        
-for i in range(n):
-    neighbors = get_neighbors(X, 
-                              y, 
-                              T[i], 
-                              6, 
-                              distance=distance)
-    print("index: ", i, 
-          ", result of vote: ", 
-          vote_harmonic_weights(neighbors,
-                                all_results=True))    
-    
-"""
-DISTANCE WEIGHTS
-"""        
-def vote_distance_weights(neighbors, all_results=True):
-    class_counter = Counter()
-    number_of_neighbors = len(neighbors)
-    for index in range(number_of_neighbors):
-        dist = neighbors[index][1]
-        label = neighbors[index][2]
-        class_counter[label] += 1 / (dist**2 + 1)
-    labels, votes = zip(*class_counter.most_common())
-    #print(labels, votes)
-    winner = class_counter.most_common(1)[0][0]
-    votes4winner = class_counter.most_common(1)[0][1]
-    if all_results:
-        total = sum(class_counter.values(), 0.0)
-        for key in class_counter:
-             class_counter[key] /= total
-        return winner, class_counter.most_common()
-    else:
-        return winner, votes4winner / sum(votes)
-for i in range(n):
-    neighbors = get_neighbors(X, 
-                              y, 
-                              T[i], 
-                              6, 
-                              distance=distance)
-    print("index: ", i, 
-          ", result of vote: ", vote_distance_weights(neighbors,
-                                                      all_results=True))    
+          ", data: ", X[i])  
